@@ -82,7 +82,7 @@ public class Admin extends Login{
                 gbc.weighty = 1;  //fill vertical cell area
                 
                 //btn1"C:\\Users\\User-PC\\Desktop\\project\\teacher.png
-                btn1 = new JButton(new ImageIcon("teacher.png"));
+                btn1 = new JButton(new ImageIcon("teacher.jpg"));
                 btn1.setToolTipText("Add / Edit / Remove Teachers");
                 gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -90,7 +90,7 @@ public class Admin extends Login{
 		panel.add(btn1, gbc);
 
                 //btn2
-                btn2 = new JButton(new ImageIcon("student.png"));
+                btn2 = new JButton("student");
 		gbc.gridx = 1;
 		gbc.gridy = 0;
                 btn2.addActionListener(this);
@@ -129,7 +129,7 @@ public class Admin extends Login{
     
     public void mouseClicked(MouseEvent e){
         if(e.getSource() == a){
-            String query = "delete from temp";
+            String query = "delete from Project.dbo.temp";
             try {
                 stmt.execute(query);
                 System.out.println("temp deleted!");
@@ -237,7 +237,7 @@ public class Admin extends Login{
         String Lname1 = "";
         String UserType = "";
         if (GetConnection() == true) {
-            String sql2 = "select * from temp";
+            String sql2 = "select * from Project.dbo.Temp";
            
             try {
                 rs = stmt.executeQuery(sql2);
