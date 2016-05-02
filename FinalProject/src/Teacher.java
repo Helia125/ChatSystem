@@ -129,7 +129,7 @@ public class Teacher extends Login{
     
     public void mouseClicked(MouseEvent e){
         
-        String query = "delete from temp";
+        String query = "delete from Project.dbo.temp";
             try {
                 stmt.execute(query);
                 System.out.println("temp deleted!");
@@ -249,7 +249,7 @@ public class Teacher extends Login{
         String Lname1 = "";
         String UserType = "";
         if (GetConnection() == true) {
-            String sql2 = "select * from temp";
+            String sql2 = "select * from Project.dbo.temp";
            
             try {
                 rs = stmt.executeQuery(sql2);
