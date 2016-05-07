@@ -72,7 +72,7 @@ public class Post {
 
     private void table() {
         try {
-            String query = "Select * from PostNotice;";
+            String query = "Select * from Project.dbo.PostNotice;";
             PreparedStatement pst = connection.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -84,7 +84,7 @@ public class Post {
 
     public void refreshtable() {
         try {
-            String query = "Select * from PostNotice;";
+            String query = "Select * from Project.dbo.PostNotice;";
             PreparedStatement pst = connection.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -109,7 +109,7 @@ public class Post {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         try {
-            frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("board.png")))));
+            frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("board.jpg")))));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -123,7 +123,7 @@ public class Post {
         table = new JTable();
         table.setRowSelectionAllowed(false);
         table.setFillsViewportHeight(true);
-        Color customColor = new Color(85, 240, 220);
+        Color customColor = new Color(85, 240, 100);
         table.setBackground(customColor);
 
         table.addMouseListener(new MouseAdapter() {
@@ -133,7 +133,7 @@ public class Post {
                     int row = table.getSelectedRow();
                     String Description = (table.getModel().getValueAt(row, 1)).toString();
 
-                    String query = "select * from PostNotice where Description='" + Description + "'";
+                    String query = "select * from Project.dbo.PostNotice where Description='" + Description + "'";
                     PreparedStatement pst = connection.prepareStatement(query);
 
                     ResultSet rs = pst.executeQuery();
@@ -167,7 +167,7 @@ public class Post {
                 if (textArea.getText().equals("")) {
                     JOptionPane.showMessageDialog(frame, "Post Cannot be empty!");
                 } else {
-                    String query2 = "select usertype + '- ' + userid as hello from temp";
+                    String query2 = "select usertype + '- ' + userid as hello from Project.dbo.temp";
                     PreparedStatement pst2;
                     try {
                         pst2 = connection.prepareStatement(query2);
@@ -175,7 +175,7 @@ public class Post {
                         while (rr.next()) {
                             id = rr.getString(1);
                         }
-                        String query = "Insert into PostNotice (id,Description) Values (LTRIM(RTRIM(?)), LTRIM(RTRIM(?)))";
+                        String query = "Insert into Project.dbo.PostNotice (id,Description) Values (LTRIM(RTRIM(?)), LTRIM(RTRIM(?)))";
 
                         PreparedStatement pst = connection.prepareStatement(query);
 
@@ -207,7 +207,7 @@ public class Post {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    String query33 = "select usertype + '- ' + userid as hello from temp";
+                    String query33 = "select usertype + '- ' + userid as hello from Project.dbo.temp";
                     PreparedStatement pst22 = connection.prepareStatement(query33);
                     ResultSet rrr = pst22.executeQuery();
                     while (rrr.next()) {
@@ -220,10 +220,10 @@ public class Post {
                         JOptionPane.showMessageDialog(frame, "You do not have the permission to delete!");
                     } else {
 
-                        String query = "Delete from PostNotice where Description =? and id=?";
+                        String query = "Delete from Project.dbo.PostNotice where Description =? and id=?";
                         try {
 
-                            String query2 = "select usertype + '- ' + userid from temp";
+                            String query2 = "select usertype + '- ' + userid from Project.dbo.temp";
                             PreparedStatement pst2 = connection.prepareStatement(query2);
                             ResultSet rr = pst2.executeQuery();
                             while (rr.next()) {
@@ -265,7 +265,7 @@ public class Post {
             public void actionPerformed(ActionEvent arg0) {
                 try {
 
-                    String query = "select * from PostNotice where Description =?";
+                    String query = "select * from Project.dbo.PostNotice where Description =?";
                     PreparedStatement pst = connection.prepareStatement(query);
                     pst.setString(1, textArea.getText().trim());
 
@@ -278,7 +278,7 @@ public class Post {
                     s.jTextArea1.setText(Description);
                     s.jTextArea2.setText(Description);
 
-                    String query2 = "select usertype + '- ' + userid as hello from temp";
+                    String query2 = "select usertype + '- ' + userid as hello from Project.dbo.temp";
                     PreparedStatement pst2 = connection.prepareStatement(query2);
                     ResultSet rr = pst2.executeQuery();
                     while (rr.next()) {
@@ -297,7 +297,7 @@ public class Post {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 try {
 
-                                    String query3 = "Update PostNotice set Description = ltrim(rtrim(?)) where Description = ? ";
+                                    String query3 = "Update Project.dbo.PostNotice set Description = ltrim(rtrim(?)) where Description = ? ";
                                     PreparedStatement pst3 = connection.prepareStatement(query3);
                                     pst3.setString(1, s.jTextArea1.getText().trim());
                                     pst3.setString(2, s.jTextArea2.getText().trim());
