@@ -1,3 +1,15 @@
+/*
+ * 
+ * 
+ * @author: Hang ZHAO
+ * @author: Yang ZHAO
+ * @author: Xiaoyi Li
+ * 
+ * 
+ * 
+ */
+
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.*;
@@ -8,6 +20,7 @@ import java.util.logging.Logger;
 public class AdminStudentTable extends JFrame{
 
     //private String table;
+	//make connection with database
     public Connection con;
     public AdminStudentTable(){
         try {
@@ -17,14 +30,14 @@ public class AdminStudentTable extends JFrame{
         }
     }
     
-    
+    //get table
     public JTable getTable(String table)throws Exception{
         JTable t1=new JTable();
         DefaultTableModel dm=new DefaultTableModel();
         Statement st=con.createStatement();   
         ResultSet rs=st.executeQuery("select UserId, Fname, Lname, gender, email from "+table);
         ResultSetMetaData rsmd=rs.getMetaData();
-        //Coding to get columns-
+        //Coding to get columns
         int cols=rsmd.getColumnCount();
         String c[]=new String[cols];
         for(int i=0;i<cols;i++){
@@ -43,14 +56,14 @@ public class AdminStudentTable extends JFrame{
         con.close();
         return t1;
     }
-    
+    //get table 
     public JTable getTable(String table,String query)throws Exception{
         JTable t1=new JTable();
         DefaultTableModel dm=new DefaultTableModel();
         Statement st=con.createStatement();
         ResultSet rs=st.executeQuery(query);
         ResultSetMetaData rsmd=rs.getMetaData();
-        //Coding to get columns-
+        //Coding to get columns
         int cols=rsmd.getColumnCount();
         String c[]=new String[cols];
         for(int i=0;i<cols;i++){

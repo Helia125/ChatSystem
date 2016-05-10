@@ -33,7 +33,7 @@ import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 public class MarkStudents extends JFrame implements TableModelListener, MouseListener, ActionListener {
-
+//create some panels and tables from JFrame
     JPanel NPanel = new JPanel();
     JPanel start = new JPanel();
     JPanel EnglishPanel = new JPanel();
@@ -63,7 +63,7 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
     private JScrollPane scrollPane_5 = new JScrollPane();
     private final JTable table = new JTable();
     private final JScrollPane scrollPane = new JScrollPane();
-
+//make conncetion with database and design the table
     public MarkStudents() throws SQLException {
 
         connection = DriverManager.getConnection("jdbc:odbc:Project");
@@ -82,8 +82,8 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
         tabbedPane.setBackgroundAt(0, Color.WHITE);
         tabbedPane.addMouseListener(this);
         
-    	ImageIcon titleIcon = new ImageIcon("markstab.jpg");
-	JLabel title = new JLabel(titleIcon);
+    	ImageIcon titleIcon = new ImageIcon("markstudent.jpg");
+JLabel title = new JLabel(titleIcon);
         start.add(title);
         
         tabbedPane.add("English", EnglishPanel);
@@ -100,14 +100,14 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
         tabbedPane.setBackgroundAt(1, Color.WHITE);
         HistoryPanel.setBackground(Color.WHITE);
         
-        tabbedPane.add("History", HistoryPanel);
+        tabbedPane.add("DataStructure", HistoryPanel);
         HistoryPanel.setLayout(null);
         scrollPane_2.setBounds(22, 23, 531, 230);
 
         HistoryPanel.add(scrollPane_2);
         scrollPane_2.setViewportView(table_2);
         ITPanel.setBackground(Color.WHITE);
-        tabbedPane.add("IT", ITPanel);
+        tabbedPane.add("Python", ITPanel);
         ITPanel.setLayout(null);
         scrollPane_3.setBounds(22, 23, 531, 230);
 
@@ -121,7 +121,7 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
         MathPanel.add(scrollPane_4);
         scrollPane_4.setViewportView(table_4);
         SciencePanel.setBackground(Color.WHITE);
-        tabbedPane.add("Science", SciencePanel);
+        tabbedPane.add("DSP", SciencePanel);
         SciencePanel.setLayout(null);
         SciencePanel.addMouseListener(this);
         scrollPane_5.setBounds(22, 23, 531, 230);
@@ -144,9 +144,8 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
         table_4.addMouseListener(this);
         table_5.addMouseListener(this);
         table.addMouseListener(this);
-        //item();
-        //Password();
-
+     
+//add table name
         tabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
 
@@ -160,13 +159,13 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
                     } else if (tabbedPane.getSelectedIndex() == 2) {
                         tabName = "Java";
                     } else if (tabbedPane.getSelectedIndex() == 3) {
-                        tabName = "History";
+                        tabName = "DataStructure";
                     } else if (tabbedPane.getSelectedIndex() == 4) {
-                        tabName = "IT";
+                        tabName = "Python";
                     } else if (tabbedPane.getSelectedIndex() == 5) {
                         tabName = "Math";
                     } else if (tabbedPane.getSelectedIndex() == 6) {
-                        tabName = "Science";
+                        tabName = "DSP";
                     }
 
 
@@ -183,8 +182,7 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
                     }
                     System.out.println(pass);
 
-                    //String query = "Select * from teachers where Subject = '" + tabName + "' and Password='" + pass + "'";
-                    //ResultSet rs = stmt.executeQuery(query);
+               
 
                     if (!tabName.equals("start")) {
                    
@@ -213,7 +211,7 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
         });
 
     }
-
+//add event when mouse click
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == table_1) {
@@ -221,16 +219,16 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
             item = "Project.dbo.Java";
         } else if (e.getSource() == table_2) {
 
-            item = "Project.dbo.History";
+            item = "Project.dbo.DataStructure";
         } else if (e.getSource() == table_3) {
 
-            item = "Project.dbo.IT";
+            item = "Project.dbo.Python";
         } else if (e.getSource() == table_4) {
 
             item = "Project.dbo.Math";
         } else if (e.getSource() == table_5) {
 
-            item = "Project.dbo.Science";
+            item = "Project.dbo.DSP";
         } else if (e.getSource() == table) {
 
             item = "Project.dbo.English";
@@ -244,7 +242,7 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
         }
 
     }
-
+//select data from database
     private void table() {
         try {
             String query = "SELECT Userid, Name, Midterm, Final, (ISNULL(Midterm,3)+ISNULL(Final,4))/2.0 AS Total FROM Project.dbo.ENGLISH;";
@@ -259,13 +257,13 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
             table_1.setModel(DbUtils.resultSetToTableModel(rs1));
             table_1.getModel().addTableModelListener(this);
 
-            String query2 = "SELECT Userid, Name, Midterm, Final, (ISNULL(Midterm,3)+ISNULL(Final,4))/2.0 AS Total FROM Project.dbo.History";
+            String query2 = "SELECT Userid, Name, Midterm, Final, (ISNULL(Midterm,3)+ISNULL(Final,4))/2.0 AS Total FROM Project.dbo.DataStructure";
             PreparedStatement pst2 = connection.prepareStatement(query2);
             ResultSet rs2 = pst2.executeQuery();
             table_2.setModel(DbUtils.resultSetToTableModel(rs2));
             table_2.getModel().addTableModelListener(this);
 
-            String query3 = "SELECT Userid, Name, Midterm, Final, (ISNULL(Midterm,3)+ISNULL(Final,4))/2.0 AS Total FROM Project.dbo.IT";
+            String query3 = "SELECT Userid, Name, Midterm, Final, (ISNULL(Midterm,3)+ISNULL(Final,4))/2.0 AS Total FROM Project.dbo.Python";
             PreparedStatement pst3 = connection.prepareStatement(query3);
             ResultSet rs3 = pst3.executeQuery();
             table_3.setModel(DbUtils.resultSetToTableModel(rs3));
@@ -277,7 +275,7 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
             table_4.setModel(DbUtils.resultSetToTableModel(rs4));
             table_4.getModel().addTableModelListener(this);
 
-            String query5 = "SELECT Userid, Name, Midterm, Final, (ISNULL(Midterm,3)+ISNULL(Final,4))/2.0 AS Total FROM Project.dbo.Science";
+            String query5 = "SELECT Userid, Name, Midterm, Final, (ISNULL(Midterm,3)+ISNULL(Final,4))/2.0 AS Total FROM Project.dbo.DSP";
             PreparedStatement pst5 = connection.prepareStatement(query5);
             ResultSet rs5 = pst5.executeQuery();
             table_5.setModel(DbUtils.resultSetToTableModel(rs5));
@@ -312,9 +310,9 @@ public class MarkStudents extends JFrame implements TableModelListener, MouseLis
     }
 
     JLabel title() {
-        title = new JLabel("<html><u>Marks</u></html>");
-        title.setBackground(Color.WHITE);
-        title.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 25));
+    	   title = new JLabel("Marks");
+           title.setBackground(Color.WHITE);
+           title.setFont(new Font("Arial", Font.PLAIN, 40));
         return title;
     }
 

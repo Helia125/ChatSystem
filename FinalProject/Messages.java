@@ -36,7 +36,7 @@ import java.util.Set;
 import javax.imageio.ImageIO;
 
 public class Messages extends JFrame {
-
+//create some panels and tables by using JFrame
     JFrame frame;
     JTable table;
     JTable table1;
@@ -65,7 +65,7 @@ public class Messages extends JFrame {
         });
     }
 
-  
+  //make connection with database and run awt by sequence
     public Messages() throws SQLException {
 
         initialize();
@@ -78,7 +78,7 @@ public class Messages extends JFrame {
             }
         });
     }
-
+//select data from database and add it on table
     public void table() {
 
         try {
@@ -121,7 +121,7 @@ public class Messages extends JFrame {
         });
 
     }
-
+//select data from database and add it on table1
     public void table1() {
         try {
 
@@ -141,7 +141,7 @@ public class Messages extends JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
+//add mouse event
         table1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 1) {
@@ -162,7 +162,7 @@ public class Messages extends JFrame {
             }
         });
     }
-
+//refresh the table when data changed
     public void refreshtable() {
         try {
             String query = "Select outbox as 'From', message from Project.dbo.messages where inbox = '" + id + "'";
@@ -175,7 +175,7 @@ public class Messages extends JFrame {
             ex.printStackTrace();
         }
     }
-
+//refresh the table1 when data changed
     public void refreshtable1() {
         try {
             String query = "Select inbox as 'To', message from Project.dbo.messages where outbox = '" + id + "'";
@@ -188,7 +188,7 @@ public class Messages extends JFrame {
             ex.printStackTrace();
         }
     }
-
+//initialize the frame
     public void initialize() {
 
         frame = new JFrame();

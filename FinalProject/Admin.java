@@ -1,15 +1,22 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
 import java.util.logging.*;
 
-/*import java.util.logging.Level;
-import java.util.logging.Logger;*/
+/*
+ * 
+ * 
+ * @author: Hang ZHAO
+ * @author: Yang ZHAO
+ * @author: Xiaoyi Li
+ * 
+ * 
+ * 
+ */
 
 public class Admin extends Login{
-    
+    //use JFrame to make some panels and buttons;
     JFrame frame = new JFrame("Admin");
     JPanel panel;
     JPanel nPanel;
@@ -41,11 +48,12 @@ public class Admin extends Login{
     public boolean GetConnection(){
         
         //To Start Connection
+
         flag = false;
         try{
             Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
             con = DriverManager.getConnection("jdbc:odbc:Project");
-            //System.out.println("Connected");
+           
             stmt = con.createStatement();
             flag=true;
         }
@@ -79,12 +87,8 @@ public class Admin extends Login{
         
         panel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
-		//gbc.insets = new Insets(1, 1, 1, 1);  //cell padding
                 gbc.fill = GridBagConstraints.BOTH; //fill cell area
-                //gbc.weightx = 1;  // fill horizontal cell area
-                //gbc.weighty = 1;  //fill vertical cell area
-                
-                //btn1"C:\\Users\\User-PC\\Desktop\\project\\teacher.png
+     
                 btn1 = new JButton(new ImageIcon("teachers.jpg"));
                 btn1.setToolTipText("Add / Edit / Remove Teachers");
                 gbc.gridx = 0;
@@ -130,6 +134,7 @@ public class Admin extends Login{
                 return panel;
     }
     
+    //add MouseEvent here
     public void mouseClicked(MouseEvent e){
         if(e.getSource() == a){
             String query = "delete from Project.dbo.temp";
@@ -149,6 +154,7 @@ public class Admin extends Login{
         dispose();
     }
     
+    //add actionEvent here to buttons
     public void actionPerformed(ActionEvent e)
     {
         if(btn1 == e.getSource())

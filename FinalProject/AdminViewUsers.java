@@ -1,29 +1,20 @@
+/*
+ * 
+ * 
+ * @author: Hang ZHAO
+ * @author: Yang ZHAO
+ * @author: Xiaoyi Li
+ * 
+ * 
+ * 
+ */
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.event.KeyAdapter;
-import java.sql.*;
 
 import javax.swing.*;
-
+import java.awt.*;
+import java.sql.*;
 import net.proteanit.sql.DbUtils;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -31,7 +22,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 public class AdminViewUsers {
-
+//use JFrame to make relatives;
     JFrame frame;
     private JTable table;
     JTextField textField;
@@ -71,11 +62,11 @@ public class AdminViewUsers {
             }
         });
     }
-
+//create table
     private void table() {
         try {
             String a = comboBox.getSelectedItem().toString();
-            //a = a.substring(0, a.length() - 1);
+         
             String query = " Select * from " + a;
             PreparedStatement pst = connection.prepareStatement(query);
             rs = pst.executeQuery();
@@ -85,11 +76,11 @@ public class AdminViewUsers {
             ex.printStackTrace();
         }
     }
-
+//refresh table when data changed
     public void refreshtable() {
         try {
             String a = comboBox.getSelectedItem().toString();
-            //a = a.substring(0, a.length() - 1);
+           
             String query = " Select * from " + a;
             PreparedStatement pst = connection.prepareStatement(query);
             rs = pst.executeQuery();
@@ -141,7 +132,7 @@ public class AdminViewUsers {
             }
         }
     };
-
+//add data to Combobox
     private void Combobox() {
         comboBox.addItemListener(itemListener);
 
@@ -186,7 +177,7 @@ public class AdminViewUsers {
         });
 
     }
-
+//initialize the frame
     private void initialize() {
         frame = new JFrame();
         frame.getContentPane().setBackground(Color.WHITE);
@@ -281,7 +272,7 @@ public class AdminViewUsers {
 
         });
 
-//        Combobox();
+
     }
 
 }

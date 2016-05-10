@@ -64,7 +64,7 @@ public class TeacherViewUsers {
             }
         });
     }
-
+//make connection with database and initialize
     public TeacherViewUsers() throws SQLException {
         
         initialize();
@@ -78,7 +78,7 @@ public class TeacherViewUsers {
             }
         });
     }
-
+//select data from database and add it on table
     private void table() {
         try {
             String query = " Select * from Project.dbo.students";
@@ -90,7 +90,7 @@ public class TeacherViewUsers {
             ex.printStackTrace();
         }
     }
-
+//refresh the table when data has changed
     public void refreshtable() {
         try {
             String query = " Select * from Project.dbo.students";
@@ -104,7 +104,7 @@ public class TeacherViewUsers {
         }
 
     }
-
+//initialize the frame
     private void initialize() {
         frame = new JFrame();
         frame.getContentPane().setBackground(Color.WHITE);

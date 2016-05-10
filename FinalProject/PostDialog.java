@@ -20,7 +20,7 @@ public class PostDialog extends javax.swing.JFrame {
     static Connection connection = null;
     static Statement stmt;
     static ResultSet rs;
-
+//make connection with database
     public static Connection dbConnector() {
         try {
             Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -43,7 +43,7 @@ Connection con=null;int i=0;
 PreparedStatement ps=null;
    
     @SuppressWarnings("unchecked")
-                           
+      //initialize the components                     
      void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -117,7 +117,7 @@ PreparedStatement ps=null;
 
         pack();
     }
-    
+    //select data from database and add it on table
     private void table() {
         try {
             String query = "Select * from Project.dbo.PostNotice;";
@@ -130,7 +130,7 @@ PreparedStatement ps=null;
             ex.printStackTrace();
         }
     }
-    
+   //refresh the table when data has changed 
     public void refreshtable() {
         try {
             String query = "Select * from Project.dbo.PostNotice;";
@@ -145,7 +145,7 @@ PreparedStatement ps=null;
 
     }
     
-    // </editor-fold>                        
+//make conncetion with database and select data from it                      
 void readdata(){
     try{
         Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -192,7 +192,7 @@ void readdata(){
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration                    
      javax.swing.JButton jButton1;
      javax.swing.JLabel jLabel1;
      javax.swing.JScrollPane jScrollPane1;

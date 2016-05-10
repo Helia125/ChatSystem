@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Student extends Login{
-    
+    //create some buttons and panels by using JFrame
     JFrame frame = new JFrame("Admin");
     JPanel panel;
     JPanel nPanel;
@@ -124,7 +124,7 @@ public class Student extends Login{
                 
                 return panel;
     }
-    
+    //add mouse event
     public void mouseClicked(MouseEvent e){
         
         String query = "delete from Project.dbo.temp";
@@ -145,7 +145,7 @@ public class Student extends Login{
         }
         dispose();
     }
-    
+    //add action event on buttons
     public void actionPerformed(ActionEvent e)
     {
         

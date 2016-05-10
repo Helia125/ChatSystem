@@ -16,6 +16,7 @@ import javax.swing.*;
 
 public class Login extends JFrame implements ActionListener, MouseListener
 {
+	//use JFrame to create some panels and buttons
 	JPanel UserPanel,NorthPanel;
 
 	JLabel UserId,UserPassword;
@@ -40,7 +41,7 @@ public class Login extends JFrame implements ActionListener, MouseListener
 		add(GetUserPanel(), BorderLayout.CENTER);
 		add(GetNorthPanel(), BorderLayout.NORTH);
 	}
-
+//make connection with database
 	public boolean GetConnection()
 	{
 		flag=false;
@@ -57,7 +58,7 @@ public class Login extends JFrame implements ActionListener, MouseListener
 		}
 		return flag;
 	}
-
+//close connection
 	public boolean CloseConnection()
 	{
 		flag=false;
@@ -110,7 +111,7 @@ public class Login extends JFrame implements ActionListener, MouseListener
 		return LblFrgtPass;
 	}
 
-
+//design the users panel
 	JPanel GetUserPanel()
 	{
 		UserPanel=new JPanel();
@@ -220,7 +221,7 @@ public class Login extends JFrame implements ActionListener, MouseListener
 
 		return BtnLogin;
 	}
-
+//add actionEvent to buttons.
 	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource()==BtnLogin)

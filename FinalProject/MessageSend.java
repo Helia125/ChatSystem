@@ -46,7 +46,7 @@ public class MessageSend extends JFrame {
     static Connection connection = null;
     static Statement stmt;
     static ResultSet rs;
-
+//make connection with  database
     public static Connection dbConnector() {
         try {
             Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -72,7 +72,7 @@ public class MessageSend extends JFrame {
             }
         });
     }
-
+//select data from database and add it on combobox
     public void FillComboBox() {
         try {
             String query = "SELECT usertype + '- ' + userid as UserId FROM Project.dbo.admins UNION SELECT usertype + '- ' + userid as UserId FROM Project.dbo.teachers UNION SELECT usertype + '- ' + userid as UserId FROM Project.dbo.students";
@@ -88,7 +88,7 @@ public class MessageSend extends JFrame {
         }
     }
 
-    
+    //make conncetion with database 
     public MessageSend() throws SQLException {
         try {
             Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -100,7 +100,7 @@ public class MessageSend extends JFrame {
 
         initialize();
     }
-
+//initialize the frame
     public void initialize() {
 
         frame = new JFrame("Compose");

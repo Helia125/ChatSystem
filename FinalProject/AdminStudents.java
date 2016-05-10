@@ -1,3 +1,13 @@
+/*
+ * 
+ * 
+ * @author: Hang ZHAO
+ * @author: Yang ZHAO
+ * @author: Xiaoyi Li
+ * 
+ * 
+ * 
+ */
 
 import java.awt.*;
 import java.awt.event.*;
@@ -9,7 +19,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 import org.jdesktop.swingx.prompt.PromptSupport;
 
-//import sun.org.mozilla.javascript.internal.Token;
+
 
 public class AdminStudents extends JFrame implements ActionListener, KeyListener, FocusListener, WindowListener {
 
@@ -22,12 +32,11 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
     JLabel StudentId, StudentsId;
     JLabel lblUserId, lblPassword,lblBirth, LblFName, LblLName, LblEmail, LblPNO;
     JTextField TxtUserId, TxtFName, TxtLName, TxtEmail, TxtPNO, TxtBirth;
-    //DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+   
     JPasswordField TxtPassword;
     JButton AddBtnSubmit;
     ButtonGroup bgGender = new ButtonGroup();
     JButton BtnEnter;
-    //JLabel StudentsLabel;
     JLabel StudentsLabel, lblGender;
     JRadioButton jrbMale, jrbFemale;
         //END ADD PANEL
@@ -41,7 +50,6 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
     ButtonGroup EditbgGender = new ButtonGroup();
     JButton EditBtnEnter;
     JButton BtnView;
-    //JLabel EditStudentsLabel;
     JLabel EditStudentsLabel, EditlblGender;
     JRadioButton EditjrbMale, EditjrbFemale;
         //END EDIT PANEL
@@ -93,7 +101,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
         addWindowListener(new WindowAdapter() {
 		      public void windowOpened(WindowEvent e) {
 		        TxtUserId.requestFocus();
-                       // EditTxtUserId.requestFocus();
+                      
 		      }
     });
     }
@@ -153,7 +161,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
     JPanel GetAddPanel() {
         AddPanel = new JPanel();
         AddPanel.setLayout(new GridBagLayout());
-        AddPanel.setBackground(Color.WHITE);
+        AddPanel.setBackground(Color.YELLOW);
 
         //START USER ID
         GridBagConstraints UserId = new GridBagConstraints();
@@ -226,33 +234,16 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
         LblStudentEmail.gridy = 3;
         LblStudentEmail.fill = GridBagConstraints.BOTH;
 
-        //LblStudentEmail.insets = new Insets(0, 0, 80, 0);
+       
         AddPanel.add(GetLblStudentEmail(), LblStudentEmail);
 
         GridBagConstraints TxtTecherEmail = new GridBagConstraints();
         TxtTecherEmail.gridx = 2;
         TxtTecherEmail.gridy = 3;
 
-        //TxtTecherEmail.insets = new Insets(10, 0, 270, 0);
         AddPanel.add(GetTxtTecherEmail(), TxtTecherEmail);
                 //END EMAIL
 
-        //START PHONE
-        GridBagConstraints LblStudentPNo = new GridBagConstraints();
-        LblStudentPNo.gridx = 3;
-        LblStudentPNo.gridy = 3;
-        LblStudentPNo.fill = GridBagConstraints.BOTH;
-
-        LblStudentPNo.insets = new Insets(0, 10, 0, 0);
-        //AddPanel.add(LblStudentPNo(), LblStudentPNo);
-
-        GridBagConstraints TxtTecherPNo = new GridBagConstraints();
-        TxtTecherPNo.gridx = 4;
-        TxtTecherPNo.gridy = 3;
-
-        //TxtTecherPNo.insets = new Insets(10, 0, 0, 0);
-        //AddPanel.add(GetTxtTecherPNo(), TxtTecherPNo);
-                //END PHONE
 
         //START GENDER
         GridBagConstraints gbcLblGender = new GridBagConstraints();
@@ -272,28 +263,12 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
         AddPanel.add(GetGenderPanel(), gbcGenderPanel);
         //END GENDER
         
-        //START BIRTH
-        GridBagConstraints birth = new GridBagConstraints();
-        birth.gridx = 3;
-        birth.gridy = 4;
-
-        birth.fill = GridBagConstraints.BOTH;
-        birth.insets = new Insets(10, 10, 10, 0);
-        //AddPanel.add(GetBirth(), birth);
-
-        GridBagConstraints TxtBirth = new GridBagConstraints();
-        TxtBirth.gridx = 4;
-        TxtBirth.gridy = 4;
-
-        TxtBirth.insets = new Insets(10, 0, 10, 0);
-        //AddPanel.add(GetTxtBirth(), TxtBirth);
-        //END BIRTH
+    
         
         //START BUTTON SUBMIT
         GridBagConstraints BtnAddSubmit = new GridBagConstraints();
         BtnAddSubmit.gridx = 2;//col
         BtnAddSubmit.gridy = 6;//row
-        //gbcTxtAge.fill=GridBagConstraints.BOTH;
         BtnAddSubmit.insets = new Insets(35, 150, 0, 0);
 
         AddPanel.add(GetBtnAddSubmit(), BtnAddSubmit);
@@ -329,22 +304,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
         PromptSupport.setFocusBehavior(PromptSupport.FocusBehavior.HIDE_PROMPT, TxtPassword);
         return TxtPassword;
     }
-    //START BIRTH DATE
-    /*JLabel GetBirth() {
-        lblBirth = new JLabel("D.O.B   ");
-        lblBirth.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
-        return lblBirth;
-    }*/
-
-    /*JTextField GetTxtBirth() {
-        TxtBirth = new JFormattedTextField(format);
-        TxtBirth.setColumns(10);
-        TxtBirth.addKeyListener(this);
-         PromptSupport.setPrompt("YYYY-MM-DD", TxtBirth);
-        PromptSupport.setFocusBehavior(PromptSupport.FocusBehavior.HIDE_PROMPT, TxtBirth);
-        return TxtBirth;
-    }*/
-    //END BIRTH DATE
+    
 
     //START F NAME
     JLabel GetStudentFName() {
@@ -392,31 +352,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
     }
         //END EMAIL
 
-    //START PHONE
-    /*JLabel LblStudentPNo() {
-        LblPNO = new JLabel("Phone Number  ");
-        LblPNO.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
-        
-        return LblPNO;
-    }*/
-
-    /*JTextField GetTxtTecherPNo() {
-        TxtPNO = new JTextField(10);
-        TxtPNO.addKeyListener(this);
-        PromptSupport.setPrompt("8-13 Char", TxtPNO);
-        PromptSupport.setFocusBehavior(PromptSupport.FocusBehavior.HIDE_PROMPT, TxtPNO);
-        
-       // TxtPNO.addKeyListener(new KeyAdapter() {
-         //   @Override
-           // public void keyReleased(KeyEvent e) {
-                String typed = TxtPNO.getText();
-                TxtPNO.setText(typed.substring(0, Math.min(13, typed.length())));
-            //}
-       // });
-        
-        return TxtPNO;
-    }*/
-        //END PHONE
+    
 
     //START GENDER
     JLabel GetLblGender() {
@@ -427,7 +363,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
 
     JPanel GetGenderPanel() {
     	genderPanel = new JPanel();
-        genderPanel.setBackground(Color.white);
+        genderPanel.setBackground(Color.YELLOW);
         
         genderPanel.add(GetJrbMale());
         genderPanel.add(GetJrbFemale());
@@ -439,8 +375,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
         jrbMale = new JRadioButton("Male");
         jrbMale.setFont(new Font("Bookman Old Style", Font.PLAIN, 12));
         jrbMale.addKeyListener(this);
-        //jrbMale.addFocusListener(this);
-        jrbMale.setBackground(Color.white);
+        jrbMale.setBackground(Color.YELLOW);
         bgGender.add(jrbMale);
 
         return jrbMale;
@@ -450,8 +385,8 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
         jrbFemale = new JRadioButton("Female");
         jrbFemale.setFont(new Font("Bookman Old Style", Font.PLAIN, 12));
         jrbFemale.addKeyListener(this);
-        //jrbFemale.addFocusListener(this);
-        jrbFemale.setBackground(Color.white);
+       
+        jrbFemale.setBackground(Color.YELLOW);
         bgGender.add(jrbFemale);
 
         return jrbFemale;
@@ -488,7 +423,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
 
         DeletePanel = new JPanel();
         DeletePanel.setLayout(new GridBagLayout());
-        DeletePanel.setBackground(Color.WHITE);
+        DeletePanel.setBackground(Color.YELLOW);
 
         //START USER ID
         GridBagConstraints AdminId = new GridBagConstraints();
@@ -545,7 +480,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
         GridBagConstraints BtnDelete = new GridBagConstraints();
         BtnDelete.gridx = 3;//col
         BtnDelete.gridy = 3;//row
-        //gbcTxtAge.fill=GridBagConstraints.BOTH;
+        
         BtnDelete.insets = new Insets(80, 0, 0, 80);
 
         DeletePanel.add(GetBtnDelete(), BtnDelete);
@@ -627,13 +562,13 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
     JPanel GetEditPanel() {
         EditPanel = new JPanel();
         EditPanel.setLayout(new GridBagLayout());
-        EditPanel.setBackground(Color.WHITE);
+        EditPanel.setBackground(Color.YELLOW);
 
         //START VIEW STUDENTS
             GridBagConstraints BtnEditStudentView = new GridBagConstraints();
             BtnEditStudentView.gridx = 4;//col
             BtnEditStudentView.gridy = 1;//row
-            //BtnEditStudentView.fill=GridBagConstraints.BOTH;
+            
             BtnEditStudentView.insets = new Insets(0, 0, 30, 0);
 
             EditPanel.add(GetBtnView(), BtnEditStudentView);
@@ -707,28 +642,12 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
             EditPanel.add(GetEditTxtTecherEmail(), EditTxtTecherEmail);
         //END EMAIL
 
-        //START PHONE
-            GridBagConstraints LblEditStudentPNo = new GridBagConstraints();
-            LblEditStudentPNo.gridx = 3;
-            LblEditStudentPNo.gridy = 4;
-            LblEditStudentPNo.fill = GridBagConstraints.BOTH;
-
-            LblEditStudentPNo.insets = new Insets(10, 0, 50, 0);
-            //EditPanel.add(LblEditStudentPNo(), LblEditStudentPNo);
-
-            GridBagConstraints EditTxtTecherPNo = new GridBagConstraints();
-            EditTxtTecherPNo.gridx = 4;
-            EditTxtTecherPNo.gridy = 4;
-
-            EditTxtTecherPNo.insets = new Insets(10, 0, 50, 0);
-            //EditPanel.add(GetEditTxtTecherPNo(), EditTxtTecherPNo);
-        //END PHONE
+       
 
         //START BUTTON SUBMIT
             GridBagConstraints BtnEditSubmit = new GridBagConstraints();
             BtnEditSubmit.gridx = 2;//col
             BtnEditSubmit.gridy = 5;//row
-            //gbcTxtAge.fill=GridBagConstraints.BOTH;
             BtnEditSubmit.insets = new Insets(15, 160, 0, 0);
 
             EditPanel.add(GetBtnEditSubmit(), BtnEditSubmit);
@@ -742,7 +661,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
             BtnView = new JButton("<HTML><I><U>View Students<U></I></HTML>");
             BtnView.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             BtnView.addActionListener(this);
-            BtnView.setBackground(Color.WHITE);
+            BtnView.setBackground(Color.YELLOW);
             return BtnView;
         }
     // END TEACHER VIEW
@@ -757,7 +676,6 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
         JTextField GetEditTxtUserId() {
             EditTxtUserId = new JTextField(10);
             EditTxtUserId.addKeyListener(this);
-            //EditTxtUserId.addFocusListener(this);
             PromptSupport.setPrompt("ID + Enter", EditTxtUserId);
             PromptSupport.setFocusBehavior(PromptSupport.FocusBehavior.HIDE_PROMPT, EditTxtUserId);
             return EditTxtUserId;
@@ -809,19 +727,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
     }
         //END EMAIL
 
-    //START PHONE
-    /*JLabel LblEditStudentPNo() {
-        EditLblPNO = new JLabel("Phone Number  ");
-        EditLblPNO.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
-        return EditLblPNO;
-    }*/
 
-    /*JTextField GetEditTxtTecherPNo() {
-        EditTxtPNO = new JTextField(10);
-        EditTxtPNO.addKeyListener(this);
-        return EditTxtPNO;
-    }*/
-    //END PHONE
 
     //START BUTTON SUBMIT
     JButton GetBtnEditSubmit() {
@@ -848,17 +754,17 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
 
     @Override
     public void focusGained(FocusEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public void windowOpened(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
 
@@ -886,17 +792,11 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
     @Override
     public void windowIconified(WindowEvent arg0) {
     }
-
+//add KeyEvent here
    public void keyPressed(KeyEvent ex)
    	{
    		System.out.println(ex.getKeyCode());
-                //START WITH 'S'
-                /*if(TxtUserId.getText().equals("")){
-                    TxtUserId.setText("S#");
-                }
-                if(TxtUserId.getText().equals("S")){
-                    TxtUserId.setText("S#");
-                }*/
+                
                 if(ex.getKeyCode()==10 && ex.getSource()==TxtUserId)
            		{
            			TxtPassword.requestFocus();
@@ -978,22 +878,14 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
         
         if(GetConnection() == true){
          
-        //Phone cannot have more that 13 values    
-        //String phone1 = TxtPNO.getText();
-        //TxtPNO.setText(phone1.substring(0, Math.min(13, phone1.length())));       
-        
-        //String phone2 = EditTxtPNO.getText();
-        //EditTxtPNO.setText(phone2.substring(0, Math.min(13, phone2.length()))); 
-        
-        //Student ID cannot have more that 13 values    
+       
         String id1 = TxtUserId.getText();
         TxtUserId.setText(id1.substring(0, Math.min(10, id1.length())));       
         
         String id2 = EditTxtUserId.getText();
         EditTxtUserId.setText(id2.substring(0, Math.min(10, id2.length()))); 
         
-        //String id3 = TxtStudentId.getText();
-        //TxtStudentId.setText(id3.substring(0, Math.min(10, id3.length()))); 
+        
         
         }
             
@@ -1002,24 +894,24 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
             if (GetConnection() == true) {
                 
                 try {
-                    //rs =GetRecords(sql);
+                   
                     ResultSet rs = stmt.executeQuery(sql);
-                    //rs = stmt.executeQuery(FName);
+                   
                     while (rs.next()) {
                         name = rs.getString(1);
                         fname = rs.getString(4);
                         lname = rs.getString(5);
                         email = rs.getString(6);
-                        phone = rs.getString(8);
+                       
                     }
                     if (name.equalsIgnoreCase(UserId.toString())) {
                         System.out.println("abc");
                         EditTxtFName.setText(fname);
                         EditTxtLName.setText(lname);
                         EditTxtEmail.setText(email);
-                        EditTxtPNO.setText(phone);
+                    
                     }
-                    //stmt.executeUpdate(FName);
+                   
                 } catch (Exception ex1) {
                     ex1.printStackTrace();
                 }
@@ -1062,7 +954,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
                 String eFname = EditTxtFName.getText().trim();
                 String eLname = EditTxtLName.getText().trim();
                 String eEmail = EditTxtEmail.getText().toString().trim();
-                //String ePhone = EditTxtPNO.getText().trim();
+               
 
                 String esql = " UPDATE Project.dbo.Students SET Fname='"+eFname+"', LName='"+eLname+"', Email='"+eEmail+"' WHERE UserId='"+eUser+"' ";
 
@@ -1083,7 +975,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
                             EditTxtFName.setText("");
                             EditTxtLName.setText("");
                             EditTxtEmail.setText("");
-                            //EditTxtPNO.setText("");
+                           
 
                         } catch (Exception ex1) {
                             ex1.printStackTrace();
@@ -1102,7 +994,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
             if (e.getSource() == AddBtnSubmit) {
                 String UserId = TxtUserId.getText().trim();
                 String Password = TxtPassword.getText().trim();
-                //String Birth = TxtBirth.getText().trim();
+               
                 String UserType = "Student";
                 String FName = TxtFName.getText().trim();
                 String LName = TxtLName.getText().trim();
@@ -1110,7 +1002,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
                 String Date = "^(19|20)\\d\\d  [- /.]  (0[1-9]|1[012])  [- /.]  (0[1-9]|[12][0-9]|3[01])$";
                 boolean b;
                 String Email = TxtEmail.getText().trim().toString();
-                //String Phone = TxtPNO.getText().trim();
+                
 
                 char Gender = 0;
                 if (jrbMale.isSelected()) {
@@ -1131,7 +1023,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
                         TxtPassword.setBackground(Color.red);               
                     }
                     else{
-                        TxtPassword.setBackground(Color.white);               
+                        TxtPassword.setBackground(Color.YELLOW);               
                     }
                     JOptionPane.showMessageDialog(rootPane, "Password Too Short");
                     TxtPassword.setText("");
@@ -1140,10 +1032,7 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
                 else if (!Email.matches(Match)) {
                     JOptionPane.showMessageDialog(rootPane, "Invalid Email!");
                 }
-                //PHONE NUMBER VALIDATION
-                /*else if(Phone.length() < 8 || Phone.length() > 14){
-                    JOptionPane.showMessageDialog(rootPane, "Invalid Phone Number!");                    
-                }*/
+               
                 else {
 
                     if (GetConnection() == true) {
@@ -1155,18 +1044,18 @@ public class AdminStudents extends JFrame implements ActionListener, KeyListener
                             System.out.println("New Student Added");
 
                             TxtUserId.setText("");
-                            //TxtBirth.setText("");
+                           
                             TxtPassword.setText("");
                             TxtFName.setText("");
                             TxtLName.setText("");
                             TxtEmail.setText("");
-                            //TxtPNO.setText("");
+                            
 
                         } catch (Exception ex1) {
                             ex1.printStackTrace();
                             JOptionPane.showMessageDialog(rootPane, "Cannot enter student!");
                             TxtUserId.setText("");
-                            //TxtBirth.setText("");
+                            
                             TxtPassword.setText("");
                         }
 

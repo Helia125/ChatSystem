@@ -1,3 +1,14 @@
+/*
+ * 
+ * 
+ * @author: Hang ZHAO
+ * @author: Yang ZHAO
+ * @author: Xiaoyi Li
+ * 
+ * 
+ * 
+ */
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
@@ -11,6 +22,7 @@ import java.util.logging.Logger;
 public class AdminTeacherTable extends JFrame{
 
     //private String table;
+	//make connection with database
     public Connection con;
     public AdminTeacherTable(){
         try {
@@ -27,7 +39,7 @@ public class AdminTeacherTable extends JFrame{
         Statement st=con.createStatement();   
         ResultSet rs=st.executeQuery("select UserId, Fname, Lname, gender, subject, email from "+table);
         ResultSetMetaData rsmd=rs.getMetaData();
-        //Coding to get columns-
+        //Coding to get columns
         int cols=rsmd.getColumnCount();
         String c[]=new String[cols];
         for(int i=0;i<cols;i++){
@@ -53,7 +65,7 @@ public class AdminTeacherTable extends JFrame{
         Statement st=con.createStatement();
         ResultSet rs=st.executeQuery(query);
         ResultSetMetaData rsmd=rs.getMetaData();
-        //Coding to get columns-
+        //Coding to get columns
         int cols=rsmd.getColumnCount();
         String c[]=new String[cols];
         for(int i=0;i<cols;i++){

@@ -64,7 +64,7 @@ public class Post {
         });
     }
 
-   
+   //make conncetion with database
     public Post() throws SQLException {
         initialize();
         connection = DriverManager.getConnection("jdbc:odbc:Project");
@@ -76,7 +76,7 @@ public class Post {
             }
         });
     }
-
+//select data from database and add it on table
     private void table() {
         try {
             String query = "Select * from Project.dbo.PostNotice;";
@@ -88,7 +88,7 @@ public class Post {
             ex.printStackTrace();
         }
     }
-
+//refresh the table when data changed
     public void refreshtable() {
         try {
             String query = "Select * from Project.dbo.PostNotice;";
@@ -104,7 +104,7 @@ public class Post {
     }
 
    
-
+//initialize the frame
     private void initialize() {
         frame = new JFrame();
         frame.getContentPane().setBackground(Color.YELLOW);

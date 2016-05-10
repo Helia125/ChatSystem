@@ -18,7 +18,7 @@ import javax.swing.*;
 
 
 public class ChangePassword extends JFrame implements ActionListener{
-
+//use JFrame to create some panels, labels and so on.
     JPanel center = new JPanel();
     JPanel NPanel;
 
@@ -87,7 +87,7 @@ public class ChangePassword extends JFrame implements ActionListener{
 	}
 
 
-
+//get user panel and design it.
     JPanel GetUserPanel(){
 
         center=new JPanel();
@@ -223,7 +223,7 @@ public class ChangePassword extends JFrame implements ActionListener{
     	empLbl = new JLabel(" ");
     	return empLbl;
     }
-
+//add actionevent to buttons. 
     public void actionPerformed(ActionEvent e)
     {
         if(GetConnection() == true){
@@ -237,7 +237,7 @@ public class ChangePassword extends JFrame implements ActionListener{
                     String New_Pass = getNewPass.getText().trim();
                     String New_Pass2 = getNewPass2.getText().trim();
 
-                    rs = stmt.executeQuery(" SELECT userid, password FROM Project.dbo.admins WHERE UserId = '"+User_Id+"' and Password= '"+User_Pass+"' UNION SELECT userid, password FROM Project.dbo.teachers WHERE UserId = '"+User_Id+"' and Password= '"+User_Pass+"' ");
+                    rs = stmt.executeQuery(" SELECT userid, password FROM Project.dbo.admins WHERE UserId = '"+User_Id+"' and Password= '"+User_Pass+"' UNION SELECT userid, password FROM Project.dbo.teachers WHERE UserId = '"+User_Id+"' and Password= '"+User_Pass+"'UNION SELECT userid, password FROM Project.dbo.students WHERE UserId = '"+User_Id+"' and Password= '"+User_Pass+"'  ");
                      
                     while(rs.next())
                     {
@@ -267,6 +267,7 @@ public class ChangePassword extends JFrame implements ActionListener{
                                 {
                                    stmt.executeUpdate("update Project.dbo.admins set password= '" + New_Pass + "' where UserId= '" + User_Id + "' ");
                                    stmt.executeUpdate("update Project.dbo.teachers set password= '" + New_Pass + "' where UserId= '" + User_Id + "' ");
+                                   stmt.executeUpdate("update Project.dbo.students set password= '" + New_Pass + "' where UserId= '" + User_Id + "' ");
                                    JOptionPane.showMessageDialog(null, "Password Changed");
                                    dispose();
                                 }

@@ -15,16 +15,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
 
-/**
- *
- * @author Java
- */
 public class MessageDialog extends javax.swing.JFrame {
 
     static Connection connection = null;
     static Statement stmt;
     static ResultSet rs;
-
+//make conncetion with database
     public static Connection dbConnector() {
         try {
             Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -49,7 +45,8 @@ public class MessageDialog extends javax.swing.JFrame {
 
  
     @SuppressWarnings("unchecked")
-                       
+    
+ //design the components            
     void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -106,7 +103,7 @@ public class MessageDialog extends javax.swing.JFrame {
 
         pack();
     }
-
+//select the data from database and add it on table
     private void table() {
         try {
             String query = "Select * from Project.dbo.PostNotice;";
@@ -118,7 +115,7 @@ public class MessageDialog extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-
+//refresh the table when data change
     public void refreshtable() {
         try {
             String query = "Select * from Project.dbo.PostNotice;";
@@ -133,7 +130,7 @@ public class MessageDialog extends javax.swing.JFrame {
 
     }
 
-                      
+      //make connection with database and read data from database                
     void readdata() {
         try {
             Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -154,9 +151,6 @@ public class MessageDialog extends javax.swing.JFrame {
 
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
      
         try {

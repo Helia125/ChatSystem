@@ -33,7 +33,7 @@ import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 public class Marks extends JFrame implements TableModelListener, MouseListener, ActionListener {
-
+//create some panels by using JFrame
     JPanel NPanel = new JPanel();
     JPanel start = new JPanel();
     JPanel EnglishPanel = new JPanel();
@@ -63,7 +63,7 @@ public class Marks extends JFrame implements TableModelListener, MouseListener, 
     private JScrollPane scrollPane_5 = new JScrollPane();
     private final JTable table = new JTable();
     private final JScrollPane scrollPane = new JScrollPane();
-
+//make connection with database and set some panels' syntax
     public Marks() throws SQLException {
 
         connection = DriverManager.getConnection("jdbc:odbc:Project");
@@ -142,7 +142,7 @@ public class Marks extends JFrame implements TableModelListener, MouseListener, 
         table_5.addMouseListener(this);
         table.addMouseListener(this);
     
-
+//add table name
         tabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
 
@@ -238,7 +238,7 @@ public class Marks extends JFrame implements TableModelListener, MouseListener, 
         }
 
     }
-
+//select the data from database
     private void table() {
         try {
             String query = "SELECT Userid, Name, Midterm, Final, (ISNULL(Midterm,3)+ISNULL(Final,4))/2.0 AS Total FROM Project.dbo.ENGLISH;";
@@ -286,7 +286,7 @@ public class Marks extends JFrame implements TableModelListener, MouseListener, 
             ex.printStackTrace();
         }
     }
-
+//refresh the table when data changed
     public void refreshtable() {
         try {
             String query = "Select * from Project.dbo.English";
@@ -303,7 +303,7 @@ public class Marks extends JFrame implements TableModelListener, MouseListener, 
         }
 
     }
-
+//update table
     public void tableChanged(TableModelEvent e) {
 
         System.out.println(item);
@@ -344,9 +344,9 @@ public class Marks extends JFrame implements TableModelListener, MouseListener, 
     }
 
     JLabel title() {
-        title = new JLabel("<html><u>Marks</u></html>");
+        title = new JLabel("Marks");
         title.setBackground(Color.WHITE);
-        title.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 25));
+        title.setFont(new Font("Arial", Font.PLAIN, 40));
         return title;
     }
 

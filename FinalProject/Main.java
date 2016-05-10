@@ -15,12 +15,12 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Main extends JWindow {
-
+//use JFrame to create some panels and labels and so on.
 	JPanel panel = new JPanel();
 	JProgressBar progressBar = new JProgressBar();
         
         JLabel background=new JLabel(new ImageIcon("school.jpg"));
-
+//set some syntax and add action event.
 	public Main() {
                 background.setLayout(new BorderLayout());
 		background.add(progressBar, BorderLayout.SOUTH);

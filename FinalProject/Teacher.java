@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Teacher extends Login{
-    
+    //create some panels and buttons by using JFrame
     JFrame frame = new JFrame("Admin");
     JPanel panel;
     JPanel nPanel;
@@ -95,7 +95,7 @@ public class Teacher extends Login{
                 gbc.weighty = 1;  //fill vertical cell area
                 
                //btn1
-                btn1 = new JButton(new ImageIcon("students.jpg"));
+                btn1 = new JButton(new ImageIcon("students.png"));
                 btn1.setSize(10,10);
                 btn1.setToolTipText("Add / Edit / Remove Teachers");
                 gbc.gridx = 0;
@@ -160,7 +160,7 @@ public class Teacher extends Login{
         }
         dispose();
     }
-    
+    //add action event on buttons
     public void actionPerformed(ActionEvent e)
     {
         
